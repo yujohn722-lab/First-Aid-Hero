@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
@@ -26,21 +26,43 @@
                     android:id="@+id/headerBg"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
-                    android:background="@drawable/header_rounded_bottom"
+                    android:background=""
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvAppTitle"
+                <LinearLayout
+                    android:id="@+id/llTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="20dp"
-                    android:text="Be a First Aid Hero"
-                    android:textColor="#000000"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
+                    android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Be a "
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Aid "
+                        android:textColor="#E53935"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hero"
+                        android:textColor="#FFB300"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardSearch"
@@ -89,7 +111,7 @@
                 android:layout_marginEnd="24dp"
                 app:cardBackgroundColor="#FFB300"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="8dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvAbout">
@@ -132,7 +154,7 @@
                         android:orientation="horizontal">
 
                         <View
-                            android:layout_width="40dp"
+                            android:layout_width="30dp"
                             android:layout_height="8dp"
                             android:background="@android:color/black" />
 
@@ -173,7 +195,7 @@
                 android:layout_marginEnd="24dp"
                 app:cardBackgroundColor="#D32F2F"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="8dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvImportantNotice">
@@ -257,7 +279,7 @@
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
