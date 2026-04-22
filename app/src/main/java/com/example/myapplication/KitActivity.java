@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -60,6 +61,28 @@ public class KitActivity extends AppCompatActivity {
                 Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
                 return insets;
+            });
+        }
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.kit);
+
+            bottomNav.setOnItemSelectedListener(item -> {
+                int id = item.getItemId();
+
+                if (id == R.id.kit) {
+                    return true;
+                } else if (id == R.id.home) {
+                    startActivity(new Intent(KitActivity.this, MainActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (id == R.id.guide) {
+                    startActivity(new Intent(KitActivity.this, GuideActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                }
+
+                return false;
             });
         }
     }

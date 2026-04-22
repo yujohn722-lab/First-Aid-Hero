@@ -33,6 +33,28 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigation();
         setupCarousel();
         setupWindowInsets();
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.home);
+
+            bottomNav.setOnItemSelectedListener(item -> {
+                int id = item.getItemId();
+
+                if (id == R.id.home) {
+                    return true;
+                } else if (id == R.id.guide) {
+                    startActivity(new Intent(MainActivity.this, GuideActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (id == R.id.kit) {
+                    startActivity(new Intent(MainActivity.this, KitActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                }
+
+                return false;
+            });
+        }
     }
 
     private void setupBottomNavigation() {

@@ -23,6 +23,7 @@
         <activity
             android:name=".KitActivity"
             android:exported="false" />
+        <activity android:name=".GuideActivity" />
     </application>
 
 </manifest>
