@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigation();
         setupCarousel();
         setupWindowInsets();
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
+    }
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
         if (bottomNav != null) {
             bottomNav.setSelectedItemId(R.id.home);
-
             bottomNav.setOnItemSelectedListener(item -> {
                 int id = item.getItemId();
 
@@ -51,22 +53,9 @@ public class MainActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     return true;
                 }
-
                 return false;
             });
         }
-    }
-
-    private void setupBottomNavigation() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.kit) {
-                Intent intent = new Intent(MainActivity.this, KitActivity.class);
-                startActivity(intent);
-                return true;
-            }
-            return false;
-        });
     }
 
     private void setupCarousel() {
