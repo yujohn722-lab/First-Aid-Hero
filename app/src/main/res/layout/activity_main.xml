@@ -2,60 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <!-- Title -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Be a First Aid Hero"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:textColor="#000"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Search Bar -->
     <EditText
         android:id="@+id/searchBar"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:hint="Search"
+        android:layout_margin="16dp"
         android:background="@drawable/search_bg"
+        android:hint="Search"
         android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
 
-    <!-- About the App -->
     <TextView
         android:id="@+id/aboutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About the App"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/searchBar"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="About the App"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
-    <!-- Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/infoCard"
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:layout_margin="16dp"
+        android:backgroundTint="#F4A300"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        app:layout_constraintTop_toBottomOf="@id/aboutText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="#F4A300">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutText">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,51 +79,29 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Important Notice -->
     <TextView
         android:id="@+id/noticeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Important Notice"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/infoCard"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <!-- Emergency Button -->
-    <Button
-        android:id="@+id/emergencyBtn"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:text="In Case of an Emergency"
-        android:textColor="#FFF"
-        android:backgroundTint="#D32F2F"
-        android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/noticeText"
+        android:text="Important Notice"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/infoCard" />
 
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
     <androidx.cardview.widget.CardView
         android:id="@+id/emergencyCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        app:cardBackgroundColor="#D32F2F"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
-        app:cardBackgroundColor="#D32F2F"
-        app:layout_constraintTop_toBottomOf="@id/noticeText"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/noticeText">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -134,61 +109,63 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="In Case of an Emergency"
                 android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <!-- Description -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="For emergencies outside of your capabilities, you should either:"
                 android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:layout_marginTop="4dp"/>
+                android:textSize="13sp" />
 
-            <!-- Buttons Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
 
-                <!-- Call 911 Button -->
                 <Button
                     android:id="@+id/btnCall"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="Call 911"
-                    android:textAllCaps="false"
-                    android:textColor="#D32F2F"
                     android:background="@drawable/btn_white_rounded"
                     android:drawableStart="@android:drawable/ic_menu_call"
-                    android:padding="6dp"/>
+                    android:padding="6dp"
+                    android:text="Call 911"
+                    android:textAllCaps="false"
+                    android:textColor="#D32F2F" />
 
-                <!-- Notify Adult Button -->
                 <Button
                     android:id="@+id/btnNotify"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:background="@drawable/btn_white_rounded"
+                    android:drawableStart="@android:drawable/ic_dialog_email"
+                    android:padding="6dp"
                     android:text="Notify an adult"
                     android:textAllCaps="false"
-                    android:textColor="#D32F2F"
-                    android:background="@drawable/btn_white_rounded"
-                    android:layout_marginStart="8dp"
-                    android:drawableStart="@android:drawable/ic_dialog_email"
-                    android:padding="6dp"/>
+                    android:textColor="#D32F2F" />
             </LinearLayout>
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
