@@ -6,47 +6,46 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <androidx.core.widget.NestedScrollView
+    <!-- Compact Rounded Header -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerContainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp"
+        android:layout_marginTop="-32dp"> <!-- Slide up to hide top corners -->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="24dp">
+            android:orientation="vertical"
+            android:paddingTop="48dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:text="Be a First Aid Hero"
                 android:textColor="#111111"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/searchContainer"
-                android:layout_width="0dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
+                android:id="@+id/searchContainerInHeader"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
                 app:cardBackgroundColor="#F8F9FA"
-                app:cardCornerRadius="29dp"
-                app:cardElevation="3dp"
-                app:strokeWidth="0dp"
-                android:outlineAmbientShadowColor="#40000000"
-                android:outlineSpotShadowColor="#40000000"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleText">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#EEEEEE"
+                app:strokeWidth="1dp">
 
                 <SearchView
                     android:id="@+id/mainSearch"
@@ -57,36 +56,54 @@
                     android:queryBackground="@android:color/transparent"
                     android:queryHint="Search" />
             </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintTop_toBottomOf="@id/headerContainer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
 
             <TextView
                 android:id="@+id/tvAbout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
                 android:text="About the App"
                 android:textColor="#1D1B20"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchContainer" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/heroViewPager"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvAbout" />
 
             <LinearLayout
                 android:id="@+id/indicatorContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -119,11 +136,11 @@
                 android:id="@+id/tvImportantNotice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
                 android:text="Important Notice"
                 android:textColor="#1D1B20"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/indicatorContainer" />
@@ -132,12 +149,14 @@
                 android:id="@+id/emergencyCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
                 app:cardBackgroundColor="#D32F2F"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="4dp"
+                app:cardElevation="10dp"
+                android:outlineAmbientShadowColor="#88D32F2F"
+                android:outlineSpotShadowColor="#AAD32F2F"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvImportantNotice">
@@ -146,7 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -166,7 +185,7 @@
                             android:layout_marginStart="8dp"
                             android:text="In Case of an Emergency"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -188,7 +207,7 @@
                             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_marginEnd="6dp"
                             android:backgroundTint="#FFFFFF"
                             android:padding="0dp"
                             android:text="Call 911"
@@ -210,7 +229,7 @@
                             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
+                            android:layout_marginStart="6dp"
                             android:backgroundTint="#FFFFFF"
                             android:padding="0dp"
                             android:text="Notify an adult"
