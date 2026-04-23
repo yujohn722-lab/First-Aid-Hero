@@ -26,21 +26,24 @@
                 android:layout_marginTop="16dp"
                 android:text="Be a First Aid Hero"
                 android:textColor="#111111"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/searchContainer"
                 android:layout_width="0dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="#F0E9CC"
+                app:cardBackgroundColor="#F8F9FA"
                 app:cardCornerRadius="29dp"
-                app:cardElevation="8dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                android:outlineAmbientShadowColor="#40000000"
+                android:outlineSpotShadowColor="#40000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titleText">
@@ -53,7 +56,7 @@
                     android:iconifiedByDefault="false"
                     android:queryBackground="@android:color/transparent"
                     android:queryHint="Search" />
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/tvAbout"
@@ -63,7 +66,7 @@
                 android:layout_marginTop="24dp"
                 android:text="About the App"
                 android:textColor="#1D1B20"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/searchContainer" />
@@ -120,7 +123,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Important Notice"
                 android:textColor="#1D1B20"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/indicatorContainer" />
@@ -163,7 +166,7 @@
                             android:layout_marginStart="8dp"
                             android:text="In Case of an Emergency"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -175,45 +178,55 @@
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="16dp">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnCall911"
                             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="4dp"
                             android:backgroundTint="#FFFFFF"
+                            android:padding="0dp"
                             android:text="Call 911"
                             android:textAllCaps="false"
                             android:textColor="#D32F2F"
                             app:cornerRadius="20dp"
                             app:icon="@android:drawable/ic_menu_call"
                             app:iconGravity="textStart"
-                            app:iconPadding="8dp"
-                            app:iconTint="#D32F2F" />
+                            app:iconPadding="4dp"
+                            app:iconTint="#D32F2F"
+                            app:layout_constraintBottom_toBottomOf="@+id/btnNotifyAdult"
+                            app:layout_constraintEnd_toStartOf="@+id/btnNotifyAdult"
+                            app:layout_constraintHorizontal_weight="4"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/btnNotifyAdult" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnNotifyAdult"
                             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.2"
+                            android:layout_marginStart="4dp"
                             android:backgroundTint="#FFFFFF"
+                            android:padding="0dp"
                             android:text="Notify an adult"
                             android:textAllCaps="false"
                             android:textColor="#D32F2F"
                             app:cornerRadius="20dp"
                             app:icon="@android:drawable/ic_menu_call"
                             app:iconGravity="textStart"
-                            app:iconPadding="8dp"
-                            app:iconTint="#D32F2F" />
-                    </LinearLayout>
+                            app:iconPadding="4dp"
+                            app:iconTint="#D32F2F"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="6"
+                            app:layout_constraintStart_toEndOf="@+id/btnCall911"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -225,8 +238,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        android:minHeight="0dp"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconSize="20dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemPaddingBottom="4dp"
+        app:itemPaddingTop="4dp"
+        app:itemTextColor="@color/nav_item_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu" />

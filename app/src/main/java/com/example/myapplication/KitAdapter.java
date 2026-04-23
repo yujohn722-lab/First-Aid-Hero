@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
@@ -22,14 +25,16 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, description;
         ImageView arrow;
-        LinearLayout header;
+        MaterialCardView kitCard;
+        View iconPlaceholder;
 
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
             arrow = itemView.findViewById(R.id.arrow);
-            header = itemView.findViewById(R.id.header);
+            kitCard = itemView.findViewById(R.id.kitCard);
+            iconPlaceholder = itemView.findViewById(R.id.kitIconPlaceholder);
         }
     }
 
@@ -47,11 +52,16 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
         holder.title.setText(item.getTitle());
         holder.description.setText(item.getDescription());
 
+        // Apply dynamic background color
+        if (item.getBackgroundColor() != null) {
+            holder.kitCard.setCardBackgroundColor(Color.parseColor(item.getBackgroundColor()));
+        }
+
         boolean isExpanded = item.isExpanded();
         holder.description.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
         holder.arrow.setRotation(isExpanded ? 180f : 0f);
 
-        holder.header.setOnClickListener(v -> {
+        holder.kitCard.setOnClickListener(v -> {
             int pos = holder.getAdapterPosition();
             if (pos != RecyclerView.NO_POSITION) {
                 KitItem current = list.get(pos);

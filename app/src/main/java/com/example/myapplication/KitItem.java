@@ -4,11 +4,13 @@ public class KitItem {
 
     private String title;
     private String description;
+    private String backgroundColor;
     private boolean isExpanded;
 
-    public KitItem(String title, String description) {
+    public KitItem(String title, String description, String backgroundColor) {
         this.title = title;
         this.description = description;
+        this.backgroundColor = backgroundColor;
         this.isExpanded = false;
     }
 
@@ -19,6 +21,10 @@ public class KitItem {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
     }
 
     public boolean isExpanded() {

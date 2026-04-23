@@ -14,12 +14,12 @@
         android:layout_marginTop="16dp"
         android:text="First Aid Kit"
         android:textColor="#111111"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/searchContainer"
         android:layout_width="0dp"
         android:layout_height="58dp"
@@ -27,8 +27,11 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="28dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="#F0E9CC"
+        app:cardElevation="3dp"
+        app:strokeWidth="0dp"
+        android:outlineAmbientShadowColor="#40000000"
+        android:outlineSpotShadowColor="#40000000"
+        app:cardBackgroundColor="#F8F9FA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleText">
@@ -41,7 +44,7 @@
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
             android:queryHint="Search" />
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -58,8 +61,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        android:minHeight="0dp"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconSize="20dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemPaddingBottom="4dp"
+        app:itemPaddingTop="4dp"
+        app:itemTextColor="@color/nav_item_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu" />

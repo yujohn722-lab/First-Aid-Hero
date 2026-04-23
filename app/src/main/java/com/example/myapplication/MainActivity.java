@@ -60,9 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupCarousel() {
         viewPager = findViewById(R.id.heroViewPager);
-        dot1 = findViewById(R.id.dot1);
-        dot2 = findViewById(R.id.dot2);
-        dot3 = findViewById(R.id.dot3);
+        ViewGroup indicatorContainer = findViewById(R.id.indicatorContainer);
+        if (indicatorContainer != null) {
+            dot1 = indicatorContainer.getChildAt(0);
+            dot2 = indicatorContainer.getChildAt(1);
+            dot3 = indicatorContainer.getChildAt(2);
+        }
 
         List<CarouselItem> items = new ArrayList<>();
         items.add(new CarouselItem("#FFB300", R.drawable.hero_mascot, 
@@ -70,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 "Be the help they need.\nLearn to handle cuts, burns, and more!"));
         items.add(new CarouselItem("#F77F00", R.drawable.hero_aid, 
                 "FIRST AID GUIDE", 
-                "Short description for first aid guide lorem ipsum"));
-        items.add(new CarouselItem("#409B22", R.drawable.hero_kit, 
+                "Learn step-by-step instructions for emergencies."));
+        items.add(new CarouselItem("#409B22", R.drawable.hero_kit,
                 "FIRST AID KIT", 
-                "Description for first aid kit lorem ipsum"));
+                "Essential items you need in your medical kit."));
 
         CarouselAdapter adapter = new CarouselAdapter(items);
         viewPager.setAdapter(adapter);
@@ -86,26 +89,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set initial position to somewhere in the middle for infinite-like feel
         viewPager.setCurrentItem(items.size() * 100, false);
     }
 
     private void updateIndicators(int position) {
-        // Reset all dots
         setDotSize(dot1, 8);
         setDotSize(dot2, 8);
         setDotSize(dot3, 8);
-        dot1.setBackgroundColor(Color.LTGRAY);
-        dot2.setBackgroundColor(Color.LTGRAY);
-        dot3.setBackgroundColor(Color.LTGRAY);
+        if (dot1 != null) dot1.setBackgroundColor(Color.parseColor("#CCCCCC"));
+        if (dot2 != null) dot2.setBackgroundColor(Color.parseColor("#CCCCCC"));
+        if (dot3 != null) dot3.setBackgroundColor(Color.parseColor("#CCCCCC"));
 
-        // Highlight and expand selected dot
         View selectedDot = (position == 0) ? dot1 : (position == 1) ? dot2 : dot3;
-        setDotSize(selectedDot, 30);
-        selectedDot.setBackgroundColor(Color.BLACK);
+        if (selectedDot != null) {
+            setDotSize(selectedDot, 32);
+            selectedDot.setBackgroundColor(Color.BLACK);
+        }
     }
 
     private void setDotSize(View dot, int widthDp) {
+        if (dot == null) return;
         ViewGroup.LayoutParams params = dot.getLayoutParams();
         params.width = (int) (widthDp * getResources().getDisplayMetrics().density);
         dot.setLayoutParams(params);
@@ -115,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
         View rootView = findViewById(android.R.id.content);
         ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            // Setting bottom padding to 0 to fix the nav bar gap
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
             return insets;
         });
     }

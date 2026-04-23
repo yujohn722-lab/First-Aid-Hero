@@ -10,15 +10,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <ImageView
             android:id="@+id/carouselImage"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:src="@drawable/hero_mascot" />
 
         <TextView
@@ -39,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:text="Be the help they need.\nLearn to handle cuts, burns, and more!"
             android:textAlignment="center"
-            android:textColor="#49454F"
+            android:textColor="#000000"
             android:textSize="14sp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

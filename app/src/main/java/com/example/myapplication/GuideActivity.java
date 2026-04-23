@@ -21,15 +21,11 @@ public class GuideActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_guide);
 
-        View rootView = findViewById(R.id.main);
-        if (rootView != null) {
-            ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
-                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                return insets;
-            });
-        }
+        setupWindowInsets();
+        setupBottomNavigation();
+    }
 
+    private void setupBottomNavigation() {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         if (bottomNav != null) {
             bottomNav.setSelectedItemId(R.id.guide);
@@ -50,6 +46,18 @@ public class GuideActivity extends AppCompatActivity {
                 }
 
                 return false;
+            });
+        }
+    }
+
+    private void setupWindowInsets() {
+        View rootView = findViewById(android.R.id.content);
+        if (rootView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                // Fix: Remove bottom padding (set to 0) to remove the gap under the navbar
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
+                return insets;
             });
         }
     }

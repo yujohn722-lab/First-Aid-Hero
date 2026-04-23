@@ -6,209 +6,395 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="First Aid Guide"
-        android:textColor="#111111"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchContainer"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="#F0E9CC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleText">
-
-        <SearchView
-            android:id="@+id/mainSearch"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:iconifiedByDefault="false"
-            android:queryBackground="@android:color/transparent"
-            android:queryHint="Search" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/guideLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="First Aid Guide"
-        android:textColor="#111111"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchContainer" />
-
-    <LinearLayout
-        android:id="@+id/cardGrid"
-        android:layout_width="0dp"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideLabel">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:paddingBottom="24dp">
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="First Aid Guide"
+                android:textColor="#111111"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/searchContainer"
                 android:layout_width="0dp"
-                android:layout_height="115dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="#43A61F">
+                android:layout_height="58dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#F8F9FA"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                android:outlineAmbientShadowColor="#40000000"
+                android:outlineSpotShadowColor="#40000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleText">
 
-                <LinearLayout
+                <SearchView
+                    android:id="@+id/mainSearch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:background="@android:color/transparent"
+                    android:iconifiedByDefault="false"
+                    android:queryBackground="@android:color/transparent"
+                    android:queryHint="Search" />
+            </com.google.android.material.card.MaterialCardView>
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_first_aid_kit" />
+            <TextView
+                android:id="@+id/guideLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="First Aid Topics"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchContainer" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Allergies"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:id="@+id/cardGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/guideLabel">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="115dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="#F28A00">
-
+                <!-- Row 1: Allergies, Bruises -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_cut_hand" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#4CAF50">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Allergies"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Burns"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#2196F3">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Bruises"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="115dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="#F3AB0F">
-
+                <!-- Row 2: Burns, Choking -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_first_aid_kit" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#FF9800">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Burns"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Bruises"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#F44336">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Choking"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="115dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="#1587C9">
-
+                <!-- Row 3: Cuts, Insect Bites -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_cut_hand" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#4CAF50">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Cuts"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Cuts"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#2196F3">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Insect Bites"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
 
-    </LinearLayout>
+                <!-- Row 4: Nosebleed, Sprains -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#FF9800">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Nosebleed"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#F44336">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+                            <View
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/circle_placeholder" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Sprains"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:minLines="2" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        android:minHeight="0dp"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconSize="20dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemPaddingBottom="4dp"
+        app:itemPaddingTop="4dp"
+        app:itemTextColor="@color/nav_item_color"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_menu"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
