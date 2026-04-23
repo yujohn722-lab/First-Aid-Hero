@@ -6,24 +6,24 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Compact Rounded Header -->
+    <!-- Smaller Compact Rounded Header -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeWidth="0dp"
-        android:layout_marginTop="-32dp"> <!-- Slide up to hide top corners -->
+        android:layout_marginTop="-24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="48dp"
-            android:paddingBottom="20dp"
+            android:paddingTop="36dp"
+            android:paddingBottom="12dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
@@ -33,16 +33,16 @@
                 android:layout_height="wrap_content"
                 android:text="Be a First Aid Hero"
                 android:textColor="#111111"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/searchContainerInHeader"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
                 app:cardBackgroundColor="#F8F9FA"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="21dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#EEEEEE"
                 app:strokeWidth="1dp">
@@ -77,10 +77,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:text="About the App"
                 android:textColor="#1D1B20"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -89,12 +89,12 @@
                 android:id="@+id/heroViewPager"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                android:paddingBottom="16dp"
+                android:paddingBottom="12dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvAbout" />
@@ -137,10 +137,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:text="Important Notice"
                 android:textColor="#1D1B20"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/indicatorContainer" />
@@ -150,11 +150,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 app:cardBackgroundColor="#D32F2F"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
                 android:outlineAmbientShadowColor="#88D32F2F"
                 android:outlineSpotShadowColor="#AAD32F2F"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -174,8 +174,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@android:drawable/ic_dialog_alert"
                             app:tint="#FFFFFF" />
 
@@ -185,22 +185,22 @@
                             android:layout_marginStart="8dp"
                             android:text="In Case of an Emergency"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="6dp"
                         android:text="For emergencies outside of your capabilities, you should either:"
                         android:textColor="#FFFFFF"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginTop="12dp">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnCall911"
@@ -213,7 +213,8 @@
                             android:text="Call 911"
                             android:textAllCaps="false"
                             android:textColor="#D32F2F"
-                            app:cornerRadius="20dp"
+                            android:textSize="13sp"
+                            app:cornerRadius="18dp"
                             app:icon="@android:drawable/ic_menu_call"
                             app:iconGravity="textStart"
                             app:iconPadding="4dp"
@@ -228,14 +229,15 @@
                             android:id="@+id/btnNotifyAdult"
                             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_marginStart="6dp"
                             android:backgroundTint="#FFFFFF"
                             android:padding="0dp"
                             android:text="Notify an adult"
                             android:textAllCaps="false"
                             android:textColor="#D32F2F"
-                            app:cornerRadius="20dp"
+                            android:textSize="13sp"
+                            app:cornerRadius="18dp"
                             app:icon="@android:drawable/ic_menu_call"
                             app:iconGravity="textStart"
                             app:iconPadding="4dp"

@@ -6,24 +6,24 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Header Container with Shadow and Rounded Bottom -->
+    <!-- Smaller Compact Rounded Header -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeWidth="0dp"
-        android:layout_marginTop="-32dp">
+        android:layout_marginTop="-24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="48dp"
-            android:paddingBottom="20dp"
+            android:paddingTop="36dp"
+            android:paddingBottom="12dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
@@ -33,16 +33,16 @@
                 android:layout_height="wrap_content"
                 android:text="First Aid Guide"
                 android:textColor="#111111"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/searchContainerInHeader"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
                 app:cardBackgroundColor="#F8F9FA"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="21dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#EEEEEE"
                 app:strokeWidth="1dp">
@@ -77,10 +77,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:text="First Aid Topics"
                 android:textColor="#111111"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/guideLabel">
@@ -103,10 +103,10 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginEnd="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#4CAF50">
@@ -115,19 +115,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Allergies"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -136,10 +136,10 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginStart="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#2196F3">
@@ -148,19 +148,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Bruises"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -172,15 +172,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginEnd="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#FF9800">
@@ -189,19 +189,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Burns"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -210,10 +210,10 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginStart="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#F44336">
@@ -222,19 +222,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Choking"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -246,15 +246,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginEnd="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#4CAF50">
@@ -263,19 +263,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Cuts"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -284,10 +284,10 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginStart="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#2196F3">
@@ -296,19 +296,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Insect Bites"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -320,15 +320,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginEnd="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#FF9800">
@@ -337,19 +337,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Nosebleed"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
@@ -358,10 +358,10 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:layout_marginStart="8dp"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:strokeWidth="0dp"
                         app:cardBackgroundColor="#F44336">
@@ -370,19 +370,19 @@
                             android:layout_height="match_parent"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
-                            android:padding="12dp">
+                            android:padding="10dp">
                             <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
                                 android:background="@drawable/circle_placeholder" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="6dp"
                                 android:text="Sprains"
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:textStyle="bold"
                                 android:gravity="center"
                                 android:minLines="2" />
