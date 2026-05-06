@@ -16,6 +16,7 @@ public class GuideDetailActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "extra_title";
     public static final String EXTRA_TEXT = "extra_text";
     public static final String EXTRA_IMAGE = "extra_image";
+    public static final String EXTRA_COLOR = "extra_color";
 
     // Cycle through these background colors for the steps: Red, Green, Orange, Blue
     private final String[] themeColors = {"#F44336", "#4CAF50", "#FF9800", "#2196F3"};
@@ -37,22 +38,28 @@ public class GuideDetailActivity extends AppCompatActivity {
         String title = getIntent().getStringExtra(EXTRA_TITLE);
         String description = getIntent().getStringExtra(EXTRA_TEXT);
         int imageRes = getIntent().getIntExtra(EXTRA_IMAGE, R.drawable.hero_mascot);
+        String colorHex = getIntent().getStringExtra(EXTRA_COLOR);
 
-        setupViews(title, description, imageRes);
+        setupViews(title, description, imageRes, colorHex);
         populateSteps(getMedicalSteps(title));
     }
 
-    private void setupViews(String title, String description, int imageRes) {
+    private void setupViews(String title, String description, int imageRes, String colorHex) {
         TextView tvHeaderTitle = findViewById(R.id.detailTitle);
         TextView tvTopicName = findViewById(R.id.detailTopicName);
         TextView tvDescription = findViewById(R.id.detailDescription);
         ImageView ivIllustration = findViewById(R.id.detailIllustration);
         ImageView btnBack = findViewById(R.id.btnBack);
+        MaterialCardView illustrationCard = (MaterialCardView) ivIllustration.getParent();
 
         tvHeaderTitle.setText(title != null ? title : "Guide");
         tvTopicName.setText(title);
         tvDescription.setText(description);
         ivIllustration.setImageResource(imageRes);
+
+        if (colorHex != null && illustrationCard != null) {
+            illustrationCard.setCardBackgroundColor(Color.parseColor(colorHex));
+        }
 
         // Ensure btnBack calls finish()
         btnBack.setOnClickListener(v -> finish());
