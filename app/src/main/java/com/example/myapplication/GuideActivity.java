@@ -90,11 +90,11 @@ public class GuideActivity extends AppCompatActivity {
         if (card != null) {
             topicCards.add(new TopicCard(topicName, card, findViewById(rowId)));
             card.setOnClickListener(v -> {
-                // Using generic keys if GuideDetailActivity constants are missing
                 Intent intent = new Intent(GuideActivity.this, GuideDetailActivity.class);
-                intent.putExtra("EXTRA_TITLE", topicName);
-                intent.putExtra("EXTRA_TEXT", description);
-                intent.putExtra("EXTRA_IMAGE", R.drawable.hero_mascot);
+                intent.putExtra(GuideDetailActivity.EXTRA_TITLE, topicName);
+                intent.putExtra(GuideDetailActivity.EXTRA_TEXT, description);
+                // For now, using hero_mascot as a placeholder image for all
+                intent.putExtra(GuideDetailActivity.EXTRA_IMAGE, R.drawable.hero_mascot);
                 startActivity(intent);
             });
         }
