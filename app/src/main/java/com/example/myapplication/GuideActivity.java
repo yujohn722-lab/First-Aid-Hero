@@ -41,7 +41,7 @@ public class GuideActivity extends AppCompatActivity {
             TextView title = header.findViewById(R.id.headerTitleText);
             SearchView searchView = header.findViewById(R.id.headerSearch);
 
-            if (title != null) title.setText("Emergency Guide");
+            if (title != null) title.setText("First Aid Guide");
         }
     }
 
@@ -72,23 +72,34 @@ public class GuideActivity extends AppCompatActivity {
     }
 
     private void setupTopicCards() {
-        setupTopicCard(R.id.cardAllergies, R.id.rowAllergiesBruises, "Allergies");
-        setupTopicCard(R.id.cardBruises, R.id.rowAllergiesBruises, "Bruises");
-        setupTopicCard(R.id.cardBurns, R.id.rowBurnsChoking, "Burns");
-        setupTopicCard(R.id.cardChoking, R.id.rowBurnsChoking, "Choking");
-        setupTopicCard(R.id.cardCuts, R.id.rowCutsInsectBites, "Cuts");
-        setupTopicCard(R.id.cardInsectBites, R.id.rowCutsInsectBites, "Insect Bites");
-        setupTopicCard(R.id.cardNosebleed, R.id.rowNosebleedSprains, "Nosebleed");
-        setupTopicCard(R.id.cardSprains, R.id.rowNosebleedSprains, "Sprains");
+        setupTopicCard(R.id.cardAllergies, R.id.rowAllergiesBruises, "Allergies", 
+                "An allergic reaction happens when the body's immune system reacts to a normally harmless substance.");
+        setupTopicCard(R.id.cardBruises, R.id.rowAllergiesBruises, "Bruises", 
+                "Bruises are marks on the skin caused by blood trapped under the surface after an injury.");
+        setupTopicCard(R.id.cardBurns, R.id.rowBurnsChoking, "Burns", 
+                "Burns are tissue damage that results from heat, overexposure to the sun, or chemical contact.");
+        setupTopicCard(R.id.cardChoking, R.id.rowBurnsChoking, "Choking", 
+                "Choking occurs when a foreign object lodges in the throat, blocking the flow of air.");
+        setupTopicCard(R.id.cardCuts, R.id.rowCutsInsectBites, "Cuts", 
+                "A cut is a break or opening in the skin. It may be deep, smooth, or jagged.");
+        setupTopicCard(R.id.cardInsectBites, R.id.rowCutsInsectBites, "Insect Bites", 
+                "Most insect bites and stings cause a mild skin reaction, but some can be serious.");
+        setupTopicCard(R.id.cardNosebleed, R.id.rowNosebleedSprains, "Nosebleed", 
+                "Nosebleeds are common and usually not serious, often caused by dry air or minor injury.");
+        setupTopicCard(R.id.cardSprains, R.id.rowNosebleedSprains, "Sprains", 
+                "A sprain is a stretching or tearing of ligaments, often occurring in the ankle or wrist.");
     }
 
-    private void setupTopicCard(int cardId, int rowId, String topicName) {
+    private void setupTopicCard(int cardId, int rowId, String topicName, String description) {
         View card = findViewById(cardId);
         if (card != null) {
             topicCards.add(new TopicCard(topicName, card, findViewById(rowId)));
             card.setOnClickListener(v -> {
                 Intent intent = new Intent(GuideActivity.this, GuideDetailActivity.class);
-                intent.putExtra(GuideDetailActivity.EXTRA_TOPIC, topicName);
+                intent.putExtra(GuideDetailActivity.EXTRA_TITLE, topicName);
+                intent.putExtra(GuideDetailActivity.EXTRA_TEXT, description);
+                // For now, using hero_mascot as a placeholder image for all
+                intent.putExtra(GuideDetailActivity.EXTRA_IMAGE, R.drawable.hero_mascot);
                 startActivity(intent);
             });
         }

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,13 +37,19 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
         holder.image.setImageResource(item.getImageResource());
         holder.title.setText(item.getTitle());
         holder.text.setText(item.getText());
+
+        // Handle click to open Detail Activity
+        holder.card.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), GuideDetailActivity.class);
+            intent.putExtra(GuideDetailActivity.EXTRA_TITLE, item.getTitle());
+            intent.putExtra(GuideDetailActivity.EXTRA_TEXT, item.getText());
+            intent.putExtra(GuideDetailActivity.EXTRA_IMAGE, item.getImageResource());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
     public int getItemCount() {
-        // Return a large number to enable pseudo-infinite swiping if desired, 
-        // or just items.size() for simple looping logic in MainActivity.
-        // The user asked to go back to the first if swiping next from last.
         return Integer.MAX_VALUE;
     }
 
