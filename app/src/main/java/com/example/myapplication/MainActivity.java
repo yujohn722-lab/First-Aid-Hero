@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,45 +32,45 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        setupHeader();
         setupBottomNavigation();
         setupCarousel();
-        setupQuickActions();
         setupWindowInsets();
     }
 
-    private void setupQuickActions() {
-        View guideCard = findViewById(R.id.quickGuideCard);
-        View kitCard = findViewById(R.id.quickKitCard);
+    private void setupHeader() {
+        View header = findViewById(R.id.includedHeader);
+        if (header != null) {
+            TextView title = header.findViewById(R.id.headerTitleText);
+            SearchView searchView = header.findViewById(R.id.headerSearch);
 
-        if (guideCard != null) {
-            guideCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GuideActivity.class)));
-        }
-
-        if (kitCard != null) {
-            kitCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, KitActivity.class)));
+            if (title != null) title.setText("First Aid Hero");
         }
     }
 
     private void setupBottomNavigation() {
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
-        if (bottomNav != null) {
-            bottomNav.setSelectedItemId(R.id.home);
-            bottomNav.setOnItemSelectedListener(item -> {
-                int id = item.getItemId();
+        View includedNav = findViewById(R.id.includedBottomNav);
+        if (includedNav != null) {
+            BottomNavigationView bottomNav = includedNav.findViewById(R.id.bottomNav);
+            if (bottomNav != null) {
+                bottomNav.setSelectedItemId(R.id.nav_home);
+                bottomNav.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
 
-                if (id == R.id.home) {
-                    return true;
-                } else if (id == R.id.guide) {
-                    startActivity(new Intent(MainActivity.this, GuideActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.kit) {
-                    startActivity(new Intent(MainActivity.this, KitActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                return false;
-            });
+                    if (id == R.id.nav_home) {
+                        return true;
+                    } else if (id == R.id.nav_guide) {
+                        startActivity(new Intent(MainActivity.this, GuideActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (id == R.id.nav_kit) {
+                        startActivity(new Intent(MainActivity.this, KitActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    }
+                    return false;
+                });
+            }
         }
     }
 
@@ -129,12 +131,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupWindowInsets() {
-        View rootView = findViewById(android.R.id.content);
-        ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            // Setting bottom padding to 0 to fix the nav bar gap
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
-            return insets;
-        });
+        View rootView = findViewById(R.id.main);
+        if (rootView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
+                return insets;
+            });
+        }
     }
 }

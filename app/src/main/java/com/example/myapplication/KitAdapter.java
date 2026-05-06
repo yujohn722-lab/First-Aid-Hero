@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +30,6 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
         TextView title, description;
         ImageView arrow;
         MaterialCardView kitCard;
-        View iconPlaceholder;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -39,7 +37,6 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
             description = itemView.findViewById(R.id.description);
             arrow = itemView.findViewById(R.id.arrow);
             kitCard = itemView.findViewById(R.id.kitCard);
-            iconPlaceholder = itemView.findViewById(R.id.kitIconPlaceholder);
         }
     }
 

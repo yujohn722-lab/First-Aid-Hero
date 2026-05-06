@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,27 +41,31 @@ public class KitActivity extends AppCompatActivity {
     }
 
     private void setupBottomNavigation() {
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
-        if (bottomNav != null) {
-            bottomNav.setSelectedItemId(R.id.kit);
+        View includedNav = findViewById(R.id.includedBottomNav);
+        if (includedNav != null) {
+            BottomNavigationView bottomNav = includedNav.findViewById(R.id.bottomNav);
+            if (bottomNav != null) {
+                // Ensure the kit tab is highlighted
+                bottomNav.setSelectedItemId(R.id.nav_kit);
 
-            bottomNav.setOnItemSelectedListener(item -> {
-                int id = item.getItemId();
+                bottomNav.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
 
-                if (id == R.id.kit) {
-                    return true;
-                } else if (id == R.id.home) {
-                    startActivity(new Intent(KitActivity.this, MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.guide) {
-                    startActivity(new Intent(KitActivity.this, GuideActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
+                    if (id == R.id.nav_kit) {
+                        return true;
+                    } else if (id == R.id.nav_home) {
+                        startActivity(new Intent(KitActivity.this, MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (id == R.id.nav_guide) {
+                        startActivity(new Intent(KitActivity.this, GuideActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    }
 
-                return false;
-            });
+                    return false;
+                });
+            }
         }
     }
 
@@ -70,8 +75,6 @@ public class KitActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
             allItems = new ArrayList<>();
-            // Row 1 colors: Green (#4CAF50), Blue (#2196F3)
-            // Row 2 colors: Orange (#FF9800), Red (#F44336)
             allItems.add(new KitItem("Adhesive Bandages", "Great for covering small cuts and scrapes to keep them clean.", "#4CAF50"));
             allItems.add(new KitItem("Antiseptic Wipes", "Use these to clean the skin around a boo-boo.", "#2196F3"));
             allItems.add(new KitItem("Cotton Balls", "Soft puffs for applying cleaning liquid or dabbing wounds.", "#FF9800"));
@@ -88,22 +91,30 @@ public class KitActivity extends AppCompatActivity {
     }
 
     private void setupSearch() {
-        SearchView searchView = findViewById(R.id.mainSearch);
-        if (searchView != null) {
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    filterKitItems(query);
-                    searchView.clearFocus();
-                    return true;
-                }
+        View header = findViewById(R.id.includedHeader);
+        if (header != null) {
+            TextView titleText = header.findViewById(R.id.headerTitleText);
+            if (titleText != null) {
+                titleText.setText("First Aid Kit");
+            }
 
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    filterKitItems(newText);
-                    return true;
-                }
-            });
+            SearchView searchView = header.findViewById(R.id.headerSearch);
+            if (searchView != null) {
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        filterKitItems(query);
+                        searchView.clearFocus();
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        filterKitItems(newText);
+                        return true;
+                    }
+                });
+            }
         }
     }
 
@@ -134,6 +145,8 @@ public class KitActivity extends AppCompatActivity {
     }
 
     private KitItem findClosestItem(String searchText) {
+        if (allItems == null || allItems.isEmpty()) return null;
+
         KitItem closestItem = allItems.get(0);
         int bestScore = getDistance(searchText, closestItem.getTitle().toLowerCase());
 
