@@ -23,6 +23,9 @@
         <activity
             android:name=".KitActivity"
             android:exported="false" />
+        <activity
+            android:name=".GuideDetailActivity"
+            android:exported="false" />
         <activity android:name=".GuideActivity" />
     </application>
 

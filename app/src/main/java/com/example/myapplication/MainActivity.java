@@ -32,7 +32,21 @@ public class MainActivity extends AppCompatActivity {
 
         setupBottomNavigation();
         setupCarousel();
+        setupQuickActions();
         setupWindowInsets();
+    }
+
+    private void setupQuickActions() {
+        View guideCard = findViewById(R.id.quickGuideCard);
+        View kitCard = findViewById(R.id.quickKitCard);
+
+        if (guideCard != null) {
+            guideCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GuideActivity.class)));
+        }
+
+        if (kitCard != null) {
+            kitCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, KitActivity.class)));
+        }
     }
 
     private void setupBottomNavigation() {

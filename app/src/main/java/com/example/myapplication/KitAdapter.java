@@ -22,6 +22,11 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
         this.list = list;
     }
 
+    public void updateItems(List<KitItem> filteredList) {
+        list = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, description;
         ImageView arrow;
