@@ -87,38 +87,12 @@ public class GuideActivity extends AppCompatActivity {
             return;
         }
 
-        List<TopicCard> visibleTopics = new ArrayList<>();
         for (TopicCard topicCard : topicCards) {
-            if (topicCard.name.toLowerCase().contains(searchText)) {
-                visibleTopics.add(topicCard);
-            }
-        }
-
-        if (visibleTopics.isEmpty()) {
-            visibleTopics.add(findClosestTopic(searchText));
-        }
-
-        for (TopicCard topicCard : topicCards) {
-            boolean isVisible = visibleTopics.contains(topicCard);
+            boolean isVisible = topicCard.name.toLowerCase().contains(searchText);
             topicCard.card.setVisibility(isVisible ? View.VISIBLE : View.GONE);
         }
 
         updateGuideRows();
-    }
-
-    private TopicCard findClosestTopic(String searchText) {
-        TopicCard closestTopic = topicCards.get(0);
-        int bestScore = getDistance(searchText, closestTopic.name.toLowerCase());
-
-        for (TopicCard topicCard : topicCards) {
-            int score = getDistance(searchText, topicCard.name.toLowerCase());
-            if (score < bestScore) {
-                closestTopic = topicCard;
-                bestScore = score;
-            }
-        }
-
-        return closestTopic;
     }
 
     private void updateGuideRows() {
@@ -137,28 +111,6 @@ public class GuideActivity extends AppCompatActivity {
                     || secondCard.getVisibility() == View.VISIBLE;
             row.setVisibility(hasVisibleCard ? View.VISIBLE : View.GONE);
         }
-    }
-
-    private int getDistance(String first, String second) {
-        int[][] distance = new int[first.length() + 1][second.length() + 1];
-
-        for (int i = 0; i <= first.length(); i++) {
-            distance[i][0] = i;
-        }
-        for (int j = 0; j <= second.length(); j++) {
-            distance[0][j] = j;
-        }
-
-        for (int i = 1; i <= first.length(); i++) {
-            for (int j = 1; j <= second.length(); j++) {
-                int cost = first.charAt(i - 1) == second.charAt(j - 1) ? 0 : 1;
-                distance[i][j] = Math.min(
-                        Math.min(distance[i - 1][j] + 1, distance[i][j - 1] + 1),
-                        distance[i - 1][j - 1] + cost);
-            }
-        }
-
-        return distance[first.length()][second.length()];
     }
 
     private static class TopicCard {
@@ -203,7 +155,6 @@ public class GuideActivity extends AppCompatActivity {
         if (rootView != null) {
             ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
                 Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                // Fix: Remove bottom padding (set to 0) to remove the gap under the navbar
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
                 return insets;
             });

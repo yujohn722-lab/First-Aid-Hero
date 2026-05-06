@@ -23,7 +23,6 @@ public class KitActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private KitAdapter adapter;
-    private List<KitItem> list;
     private List<KitItem> allItems;
 
     @Override
@@ -70,11 +69,6 @@ public class KitActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
             allItems = new ArrayList<>();
-            // Row 1 colors: Green (#4CAF50), Blue (#2196F3)
-            // Row 2 colors: Orange (#FF9800), Red (#F44336)
-            // All items currently use the placeholder icon.
-            // You can replace R.drawable.placeholder with specific icons later.
-            // int icon = R.drawable.placeholder;
             allItems.add(new KitItem("Adhesive Bandages", "Great for covering small cuts and scrapes to keep them clean.", "#4CAF50", R.drawable.kit_adhesive_bandages));
             allItems.add(new KitItem("Antiseptic Wipes", "Use these to clean the skin around a boo-boo.", "#2196F3", R.drawable.kit_antiseptic_wipes));
             allItems.add(new KitItem("Cotton Balls", "Soft puffs for applying cleaning liquid or dabbing wounds.", "#FF9800", R.drawable.kit_cotton_balls));
@@ -84,8 +78,7 @@ public class KitActivity extends AppCompatActivity {
             allItems.add(new KitItem("Thermometer", "Used to check if you have a fever when you feel warm.", "#FF9800", R.drawable.kit_thermometer));
             allItems.add(new KitItem("Tweezers", "Helpful for carefully removing tiny splinters or stingers.", "#F44336", R.drawable.kit_tweezers));
 
-            list = new ArrayList<>(allItems);
-            adapter = new KitAdapter(list);
+            adapter = new KitAdapter(new ArrayList<>(allItems));
             recyclerView.setAdapter(adapter);
         }
     }
@@ -129,48 +122,8 @@ public class KitActivity extends AppCompatActivity {
             }
         }
 
-        if (filteredItems.isEmpty()) {
-            filteredItems.add(findClosestItem(searchText));
-        }
-
+        // Removed the "findClosestItem" logic to ensure exact/substring matches only
         adapter.updateItems(filteredItems);
-    }
-
-    private KitItem findClosestItem(String searchText) {
-        KitItem closestItem = allItems.get(0);
-        int bestScore = getDistance(searchText, closestItem.getTitle().toLowerCase());
-
-        for (KitItem item : allItems) {
-            int score = getDistance(searchText, item.getTitle().toLowerCase());
-            if (score < bestScore) {
-                closestItem = item;
-                bestScore = score;
-            }
-        }
-
-        return closestItem;
-    }
-
-    private int getDistance(String first, String second) {
-        int[][] distance = new int[first.length() + 1][second.length() + 1];
-
-        for (int i = 0; i <= first.length(); i++) {
-            distance[i][0] = i;
-        }
-        for (int j = 0; j <= second.length(); j++) {
-            distance[0][j] = j;
-        }
-
-        for (int i = 1; i <= first.length(); i++) {
-            for (int j = 1; j <= second.length(); j++) {
-                int cost = first.charAt(i - 1) == second.charAt(j - 1) ? 0 : 1;
-                distance[i][j] = Math.min(
-                        Math.min(distance[i - 1][j] + 1, distance[i][j - 1] + 1),
-                        distance[i - 1][j - 1] + cost);
-            }
-        }
-
-        return distance[first.length()][second.length()];
     }
 
     private void setupWindowInsets() {
