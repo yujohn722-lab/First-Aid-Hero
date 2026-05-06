@@ -96,7 +96,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/allerfy" />
+                                android:background="@drawable/guide_allergies" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/bruises" />
+                                android:background="@drawable/guide_bruises" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/burns" />
+                                android:background="@drawable/guide_burns" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/choking" />
+                                android:background="@drawable/guide_choking" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -258,7 +258,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/cuts" />
+                                android:background="@drawable/guide_cuts" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -294,7 +294,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/insect" />
+                                android:background="@drawable/guide_insect_bites" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -339,7 +339,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/nosebleed" />
+                                android:background="@drawable/guide_nosebleed" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -375,7 +375,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/sprain" />
+                                android:background="@drawable/guide_sprains" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
