@@ -93,10 +93,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/allerfy" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -129,10 +129,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/bruises" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -174,10 +174,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/burns" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -210,10 +210,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/choking" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -255,10 +255,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/cuts" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -291,10 +291,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/insect" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -336,10 +336,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/nosebleed" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -372,10 +372,10 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:background="@drawable/sprain" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

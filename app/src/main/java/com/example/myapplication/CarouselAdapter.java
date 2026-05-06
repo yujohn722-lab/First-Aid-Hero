@@ -32,18 +32,34 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CarouselItem item = items.get(position % items.size());
+        int realPosition = position % items.size();
+        CarouselItem item = items.get(realPosition);
+        
         holder.card.setCardBackgroundColor(Color.parseColor(item.getBackgroundColor()));
         holder.image.setImageResource(item.getImageResource());
         holder.title.setText(item.getTitle());
         holder.text.setText(item.getText());
 
-        // Handle click to open Detail Activity
+        // Ensure everything is visible for all slides
+        holder.title.setVisibility(View.VISIBLE);
+        holder.text.setVisibility(View.VISIBLE);
+
+        // Handle specific navigation based on the item
         holder.card.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), GuideDetailActivity.class);
-            intent.putExtra(GuideDetailActivity.EXTRA_TITLE, item.getTitle());
-            intent.putExtra(GuideDetailActivity.EXTRA_TEXT, item.getText());
-            intent.putExtra(GuideDetailActivity.EXTRA_IMAGE, item.getImageResource());
+            Intent intent;
+            if (realPosition == 1) {
+                // 2nd Item -> Guide
+                intent = new Intent(v.getContext(), GuideActivity.class);
+            } else if (realPosition == 2) {
+                // 3rd Item -> Kit
+                intent = new Intent(v.getContext(), KitActivity.class);
+            } else {
+                // 1st Item (or others) -> Original Detail behavior
+                intent = new Intent(v.getContext(), GuideDetailActivity.class);
+                intent.putExtra(GuideDetailActivity.EXTRA_TITLE, item.getTitle());
+                intent.putExtra(GuideDetailActivity.EXTRA_TEXT, item.getText());
+                intent.putExtra(GuideDetailActivity.EXTRA_IMAGE, item.getImageResource());
+            }
             v.getContext().startActivity(intent);
         });
     }
