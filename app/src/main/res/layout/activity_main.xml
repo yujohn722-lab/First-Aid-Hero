@@ -200,7 +200,7 @@
                         <View
                             android:layout_width="38dp"
                             android:layout_height="38dp"
-                            android:background="@drawable/circle_placeholder" />
+                            android:background="@drawable/home_guide" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -236,7 +236,7 @@
                         <View
                             android:layout_width="38dp"
                             android:layout_height="38dp"
-                            android:background="@drawable/circle_placeholder" />
+                            android:background="@drawable/home_kit" />
 
                         <TextView
                             android:layout_width="match_parent"

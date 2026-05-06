@@ -49,9 +49,9 @@ public class GuideActivity extends AppCompatActivity {
         if (card != null) {
             topicCards.add(new TopicCard(topicName, card, findViewById(rowId)));
             card.setOnClickListener(v -> {
-                Intent intent = new Intent(GuideActivity.this, GuideDetailActivity.class);
+                /*Intent intent = new Intent(GuideActivity.this, GuideDetailActivity.class);
                 intent.putExtra(GuideDetailActivity.EXTRA_TOPIC, topicName);
-                startActivity(intent);
+                startActivity(intent);*/
             });
         }
     }

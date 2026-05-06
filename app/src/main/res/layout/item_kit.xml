@@ -24,11 +24,14 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <View
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/kitIconPlaceholder"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/circle_placeholder" />
+                app:shapeAppearanceOverlay="@style/CircleImage"
+                android:scaleType="centerCrop"
+                android:contentDescription="@null"
+                android:src="@drawable/placeholder" />
 
             <TextView
                 android:id="@+id/title"

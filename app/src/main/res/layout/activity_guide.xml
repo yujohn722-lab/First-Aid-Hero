@@ -128,11 +128,26 @@
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
                             android:padding="10dp">
-                            <View
+                            <!--
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iconAllergies"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                app:shapeAppearanceOverlay="@style/CircleImage"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@null"
+                                android:src="@drawable/guide_allergies"
+                                />
+                            -->
+                            <View
+                                android:id="@+id/iconAllergies"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_marginTop="4dp"
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_allergies"
+                                />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -165,10 +180,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconBruises"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_bruises" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -210,10 +227,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconBurns"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_burns" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -246,10 +265,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconChoking"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_choking" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -291,10 +312,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconCuts"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_cuts" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -327,10 +350,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconInsectBites"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_insect_bites" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -372,10 +397,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconNosebleed"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_nosebleed" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -408,10 +435,12 @@
                             android:orientation="vertical"
                             android:padding="10dp">
                             <View
+                                android:id="@+id/iconSprains"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginTop="4dp"
-                                android:background="@drawable/circle_placeholder" />
+                                android:contentDescription="@null"
+                                android:background="@drawable/guide_sprains" />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

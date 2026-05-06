@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
         TextView title, description;
         ImageView arrow;
         MaterialCardView kitCard;
-        View iconPlaceholder;
+        ShapeableImageView iconPlaceholder;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -56,6 +56,7 @@ public class KitAdapter extends RecyclerView.Adapter<KitAdapter.ViewHolder> {
 
         holder.title.setText(item.getTitle());
         holder.description.setText(item.getDescription());
+        holder.iconPlaceholder.setImageResource(item.getIconRes());
 
         // Apply dynamic background color
         if (item.getBackgroundColor() != null) {

@@ -72,14 +72,17 @@ public class KitActivity extends AppCompatActivity {
             allItems = new ArrayList<>();
             // Row 1 colors: Green (#4CAF50), Blue (#2196F3)
             // Row 2 colors: Orange (#FF9800), Red (#F44336)
-            allItems.add(new KitItem("Adhesive Bandages", "Great for covering small cuts and scrapes to keep them clean.", "#4CAF50"));
-            allItems.add(new KitItem("Antiseptic Wipes", "Use these to clean the skin around a boo-boo.", "#2196F3"));
-            allItems.add(new KitItem("Cotton Balls", "Soft puffs for applying cleaning liquid or dabbing wounds.", "#FF9800"));
-            allItems.add(new KitItem("Medical Tape", "Sticky tape to hold gauze or bandages in place.", "#F44336"));
-            allItems.add(new KitItem("Gauze Pads", "Soft pads for cleaning or covering larger scrapes.", "#4CAF50"));
-            allItems.add(new KitItem("Safety Scissors", "Special scissors with rounded tips for cutting tape or bandages safely.", "#2196F3"));
-            allItems.add(new KitItem("Thermometer", "Used to check if you have a fever when you feel warm.", "#FF9800"));
-            allItems.add(new KitItem("Tweezers", "Helpful for carefully removing tiny splinters or stingers.", "#F44336"));
+            // All items currently use the placeholder icon.
+            // You can replace R.drawable.placeholder with specific icons later.
+            // int icon = R.drawable.placeholder;
+            allItems.add(new KitItem("Adhesive Bandages", "Great for covering small cuts and scrapes to keep them clean.", "#4CAF50", R.drawable.kit_adhesive_bandages));
+            allItems.add(new KitItem("Antiseptic Wipes", "Use these to clean the skin around a boo-boo.", "#2196F3", R.drawable.kit_antiseptic_wipes));
+            allItems.add(new KitItem("Cotton Balls", "Soft puffs for applying cleaning liquid or dabbing wounds.", "#FF9800", R.drawable.kit_cotton_balls));
+            allItems.add(new KitItem("Medical Tape", "Sticky tape to hold gauze or bandages in place.", "#F44336", R.drawable.kit_medical_tape));
+            allItems.add(new KitItem("Gauze Pads", "Soft pads for cleaning or covering larger scrapes.", "#4CAF50", R.drawable.kit_gauze_pads));
+            allItems.add(new KitItem("Safety Scissors", "Special scissors with rounded tips for cutting tape or bandages safely.", "#2196F3", R.drawable.kit_safety_scissors));
+            allItems.add(new KitItem("Thermometer", "Used to check if you have a fever when you feel warm.", "#FF9800", R.drawable.kit_thermometer));
+            allItems.add(new KitItem("Tweezers", "Helpful for carefully removing tiny splinters or stingers.", "#F44336", R.drawable.kit_tweezers));
 
             list = new ArrayList<>(allItems);
             adapter = new KitAdapter(list);

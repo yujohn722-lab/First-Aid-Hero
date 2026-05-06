@@ -3,6 +3,8 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupQuickActions() {
         View guideCard = findViewById(R.id.quickGuideCard);
         View kitCard = findViewById(R.id.quickKitCard);
+        View btnCall911 = findViewById(R.id.btnCall911);
+        View btnNotifyAdult = findViewById(R.id.btnNotifyAdult);
 
         if (guideCard != null) {
             guideCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GuideActivity.class)));
@@ -46,6 +50,23 @@ public class MainActivity extends AppCompatActivity {
 
         if (kitCard != null) {
             kitCard.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, KitActivity.class)));
+        }
+
+        if (btnCall911 != null) {
+            btnCall911.setOnClickListener(v -> {
+                // Pre-fills the dialer with 911
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:911"));
+                startActivity(intent);
+            });
+        }
+
+        if (btnNotifyAdult != null) {
+            btnNotifyAdult.setOnClickListener(v -> {
+                // Opens the Contacts application directly
+                Intent intent = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+                startActivity(intent);
+            });
         }
     }
 
