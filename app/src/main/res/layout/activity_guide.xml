@@ -36,7 +36,7 @@
                 android:layout_marginTop="20dp"
                 android:text="First Aid Topics"
                 android:textColor="#111111"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

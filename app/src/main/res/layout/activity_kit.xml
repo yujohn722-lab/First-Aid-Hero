@@ -37,7 +37,7 @@
                 android:layout_marginTop="20dp"
                 android:text="What's in a first aid kit"
                 android:textColor="#111111"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <!-- Subtitle: Scrolls with list -->
