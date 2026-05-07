@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F8F9FA">
 
-    <!-- Fixed Common Header -->
+    <!-- Reusable Header -->
     <include
         android:id="@+id/includedHeader"
         layout="@layout/layout_common_header"

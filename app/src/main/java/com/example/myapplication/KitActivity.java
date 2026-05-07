@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,6 @@ public class KitActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private KitAdapter adapter;
-    private List<KitItem> list;
     private List<KitItem> allItems;
 
     @Override
@@ -38,6 +40,7 @@ public class KitActivity extends AppCompatActivity {
         setupBottomNavigation();
         setupRecyclerView();
         setupSearch();
+        setupEmergencyButtons();
     }
 
     private void setupBottomNavigation() {
@@ -45,7 +48,6 @@ public class KitActivity extends AppCompatActivity {
         if (includedNav != null) {
             BottomNavigationView bottomNav = includedNav.findViewById(R.id.bottomNav);
             if (bottomNav != null) {
-                // Ensure the kit tab is highlighted
                 bottomNav.setSelectedItemId(R.id.nav_kit);
 
                 bottomNav.setOnItemSelectedListener(item -> {
@@ -84,9 +86,28 @@ public class KitActivity extends AppCompatActivity {
             allItems.add(new KitItem("Thermometer", "Used to check if you have a fever when you feel warm.", "#FF9800"));
             allItems.add(new KitItem("Tweezers", "Helpful for carefully removing tiny splinters or stingers.", "#F44336"));
 
-            list = new ArrayList<>(allItems);
-            adapter = new KitAdapter(list);
+            adapter = new KitAdapter(new ArrayList<>(allItems));
             recyclerView.setAdapter(adapter);
+        }
+    }
+
+    private void setupEmergencyButtons() {
+        MaterialButton btnCall911 = findViewById(R.id.btnCall911);
+        MaterialButton btnNotifyAdult = findViewById(R.id.btnNotifyAdult);
+
+        if (btnCall911 != null) {
+            btnCall911.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:911"));
+                startActivity(intent);
+            });
+        }
+
+        if (btnNotifyAdult != null) {
+            btnNotifyAdult.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+                startActivity(intent);
+            });
         }
     }
 
@@ -137,50 +158,8 @@ public class KitActivity extends AppCompatActivity {
             }
         }
 
-        if (filteredItems.isEmpty()) {
-            filteredItems.add(findClosestItem(searchText));
-        }
-
+        // Strict filtering: if nothing contains the search text, show empty list.
         adapter.updateItems(filteredItems);
-    }
-
-    private KitItem findClosestItem(String searchText) {
-        if (allItems == null || allItems.isEmpty()) return null;
-
-        KitItem closestItem = allItems.get(0);
-        int bestScore = getDistance(searchText, closestItem.getTitle().toLowerCase());
-
-        for (KitItem item : allItems) {
-            int score = getDistance(searchText, item.getTitle().toLowerCase());
-            if (score < bestScore) {
-                closestItem = item;
-                bestScore = score;
-            }
-        }
-
-        return closestItem;
-    }
-
-    private int getDistance(String first, String second) {
-        int[][] distance = new int[first.length() + 1][second.length() + 1];
-
-        for (int i = 0; i <= first.length(); i++) {
-            distance[i][0] = i;
-        }
-        for (int j = 0; j <= second.length(); j++) {
-            distance[0][j] = j;
-        }
-
-        for (int i = 1; i <= first.length(); i++) {
-            for (int j = 1; j <= second.length(); j++) {
-                int cost = first.charAt(i - 1) == second.charAt(j - 1) ? 0 : 1;
-                distance[i][j] = Math.min(
-                        Math.min(distance[i - 1][j] + 1, distance[i][j - 1] + 1),
-                        distance[i - 1][j - 1] + cost);
-            }
-        }
-
-        return distance[first.length()][second.length()];
     }
 
     private void setupWindowInsets() {

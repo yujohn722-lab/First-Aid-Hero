@@ -1,8 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.SearchView;
@@ -14,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,7 @@ public class GuideActivity extends AppCompatActivity {
         setupBottomNavigation();
         setupTopicCards();
         setupSearch();
+        setupEmergencyButtons();
         setupWindowInsets();
     }
 
@@ -114,6 +117,26 @@ public class GuideActivity extends AppCompatActivity {
         }
     }
 
+    private void setupEmergencyButtons() {
+        MaterialButton btnCall911 = findViewById(R.id.btnCall911);
+        MaterialButton btnNotifyAdult = findViewById(R.id.btnNotifyAdult);
+
+        if (btnCall911 != null) {
+            btnCall911.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:911"));
+                startActivity(intent);
+            });
+        }
+
+        if (btnNotifyAdult != null) {
+            btnNotifyAdult.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+                startActivity(intent);
+            });
+        }
+    }
+
     private void setupSearch() {
         View header = findViewById(R.id.includedHeader);
         if (header != null) {
@@ -145,41 +168,17 @@ public class GuideActivity extends AppCompatActivity {
                 topicCard.card.setVisibility(View.VISIBLE);
                 topicCard.row.setVisibility(View.VISIBLE);
             }
+            updateGuideRows();
             return;
         }
 
-        List<TopicCard> visibleTopics = new ArrayList<>();
+        // Strict filtering: If no matches, list shows empty.
         for (TopicCard topicCard : topicCards) {
-            if (topicCard.name.toLowerCase().contains(searchText)) {
-                visibleTopics.add(topicCard);
-            }
-        }
-
-        if (visibleTopics.isEmpty()) {
-            visibleTopics.add(findClosestTopic(searchText));
-        }
-
-        for (TopicCard topicCard : topicCards) {
-            boolean isVisible = visibleTopics.contains(topicCard);
+            boolean isVisible = topicCard.name.toLowerCase().contains(searchText);
             topicCard.card.setVisibility(isVisible ? View.VISIBLE : View.GONE);
         }
 
         updateGuideRows();
-    }
-
-    private TopicCard findClosestTopic(String searchText) {
-        TopicCard closestTopic = topicCards.get(0);
-        int bestScore = getDistance(searchText, closestTopic.name.toLowerCase());
-
-        for (TopicCard topicCard : topicCards) {
-            int score = getDistance(searchText, topicCard.name.toLowerCase());
-            if (score < bestScore) {
-                closestTopic = topicCard;
-                bestScore = score;
-            }
-        }
-
-        return closestTopic;
     }
 
     private void updateGuideRows() {
@@ -198,28 +197,6 @@ public class GuideActivity extends AppCompatActivity {
                     || secondCard.getVisibility() == View.VISIBLE;
             row.setVisibility(hasVisibleCard ? View.VISIBLE : View.GONE);
         }
-    }
-
-    private int getDistance(String first, String second) {
-        int[][] distance = new int[first.length() + 1][second.length() + 1];
-
-        for (int i = 0; i <= first.length(); i++) {
-            distance[i][0] = i;
-        }
-        for (int j = 0; j <= second.length(); j++) {
-            distance[0][j] = j;
-        }
-
-        for (int i = 1; i <= first.length(); i++) {
-            for (int j = 1; j <= second.length(); j++) {
-                int cost = first.charAt(i - 1) == second.charAt(j - 1) ? 0 : 1;
-                distance[i][j] = Math.min(
-                        Math.min(distance[i - 1][j] + 1, distance[i][j - 1] + 1),
-                        distance[i - 1][j - 1] + cost);
-            }
-        }
-
-        return distance[first.length()][second.length()];
     }
 
     private static class TopicCard {

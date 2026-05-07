@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setupHeader();
         setupBottomNavigation();
         setupCarousel();
+        setupEmergencyButtons();
         setupWindowInsets();
     }
 
@@ -42,9 +46,14 @@ public class MainActivity extends AppCompatActivity {
         View header = findViewById(R.id.includedHeader);
         if (header != null) {
             TextView title = header.findViewById(R.id.headerTitleText);
-            SearchView searchView = header.findViewById(R.id.headerSearch);
+            View searchContainer = header.findViewById(R.id.searchContainerInHeader);
 
             if (title != null) title.setText("First Aid Hero");
+            
+            // Hide the search bar container only on the Main Activity
+            if (searchContainer != null) {
+                searchContainer.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -106,6 +115,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.setCurrentItem(items.size() * 100, false);
+    }
+
+    private void setupEmergencyButtons() {
+        MaterialButton btnCall911 = findViewById(R.id.btnCall911);
+        MaterialButton btnNotifyAdult = findViewById(R.id.btnNotifyAdult);
+
+        if (btnCall911 != null) {
+            btnCall911.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:911"));
+                startActivity(intent);
+            });
+        }
+
+        if (btnNotifyAdult != null) {
+            btnNotifyAdult.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+                startActivity(intent);
+            });
+        }
     }
 
     private void updateIndicators(int position) {
