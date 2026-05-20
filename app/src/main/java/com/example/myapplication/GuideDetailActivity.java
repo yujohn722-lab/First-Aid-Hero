@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -52,21 +53,23 @@ public class GuideDetailActivity extends AppCompatActivity {
 
         // Find the card surrounding the image to change its background color
         View illustrationContainer = findViewById(R.id.detailIllustration);
-        if (illustrationContainer.getParent() instanceof MaterialCardView) {
+        if (illustrationContainer != null && illustrationContainer.getParent() instanceof MaterialCardView) {
             MaterialCardView card = (MaterialCardView) illustrationContainer.getParent();
             if (colorHex != null) card.setCardBackgroundColor(Color.parseColor(colorHex));
         }
 
-        tvHeaderTitle.setText(title != null ? title : "Guide");
-        tvTopicName.setText(title);
-        tvDescription.setText(description);
-        ivIllustration.setImageResource(imageRes);
+        if (tvHeaderTitle != null) tvHeaderTitle.setText(title != null ? title : "Guide");
+        if (tvTopicName != null) tvTopicName.setText(title);
+        if (tvDescription != null) tvDescription.setText(description);
+        if (ivIllustration != null) ivIllustration.setImageResource(imageRes);
 
-        btnBack.setOnClickListener(v -> finish());
+        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
     }
 
     private void populateSteps(List<String> steps) {
         LinearLayout container = findViewById(R.id.stepsContainer);
+        if (container == null) return;
+
         container.removeAllViews(); // Clear any old cards
 
         for (int i = 0; i < steps.size(); i++) {
@@ -78,17 +81,27 @@ public class GuideDetailActivity extends AppCompatActivity {
             TextView title = view.findViewById(R.id.stepTitle);
             TextView detail = view.findViewById(R.id.stepDetail);
 
-            // Step number (1, 2, 3...)
-            num.setText(String.valueOf(i + 1));
+            // 1. Set the big number on the left (1, 2, 3...)
+            if (num != null) num.setText(String.valueOf(i + 1));
 
-            // Put the instruction text
-            // We put the text in 'detail' and leave 'title' for a label like "Step"
-            title.setText("Step " + (i + 1));
-            detail.setText(steps.get(i));
+            // 2. REMOVE THE "STEP X" TITLE ENTIRELY
+            if (title != null) {
+                title.setVisibility(View.GONE);
+            }
 
-            // Cycle colors: Red -> Green -> Orange -> Blue
-            String color = themeColors[i % themeColors.length];
-            card.setCardBackgroundColor(Color.parseColor(color));
+            // 3. Set the actual instruction text in the detail slot
+            if (detail != null) {
+                detail.setText(steps.get(i));
+                detail.setTextSize(16);
+                detail.setTypeface(null, Typeface.NORMAL); // Changed from BOLD to NORMAL
+                detail.setTextColor(Color.WHITE);
+            }
+
+            // 4. Cycle colors: Red -> Green -> Orange -> Blue
+            if (card != null) {
+                String color = themeColors[i % themeColors.length];
+                card.setCardBackgroundColor(Color.parseColor(color));
+            }
 
             container.addView(view);
         }

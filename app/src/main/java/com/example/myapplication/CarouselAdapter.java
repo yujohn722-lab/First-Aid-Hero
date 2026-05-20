@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,38 +33,26 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int realPosition = position % items.size();
         CarouselItem item = items.get(realPosition);
-        
+
         holder.card.setCardBackgroundColor(Color.parseColor(item.getBackgroundColor()));
         holder.image.setImageResource(item.getImageResource());
         holder.title.setText(item.getTitle());
         holder.text.setText(item.getText());
 
-        // Ensure everything is visible for all slides
+        // Ensure everything is visible
         holder.title.setVisibility(View.VISIBLE);
         holder.text.setVisibility(View.VISIBLE);
 
-        // Handle specific navigation based on the item
-        holder.card.setOnClickListener(v -> {
-            Intent intent;
-            if (realPosition == 1) {
-                // 2nd Item -> Guide
-                intent = new Intent(v.getContext(), GuideActivity.class);
-            } else if (realPosition == 2) {
-                // 3rd Item -> Kit
-                intent = new Intent(v.getContext(), KitActivity.class);
-            } else {
-                // 1st Item (or others) -> Original Detail behavior
-                intent = new Intent(v.getContext(), GuideDetailActivity.class);
-                intent.putExtra(GuideDetailActivity.EXTRA_TITLE, item.getTitle());
-                intent.putExtra(GuideDetailActivity.EXTRA_TEXT, item.getText());
-                intent.putExtra(GuideDetailActivity.EXTRA_IMAGE, item.getImageResource());
-            }
-            v.getContext().startActivity(intent);
-        });
+        // CLICK ACTION REMOVED:
+        // The cards are no longer clickable and will not link to anything.
+        holder.card.setOnClickListener(null);
+        holder.card.setClickable(false);
+        holder.card.setFocusable(false);
     }
 
     @Override
     public int getItemCount() {
+        // Keeps the infinite scroll working
         return Integer.MAX_VALUE;
     }
 
