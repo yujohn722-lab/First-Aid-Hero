@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F8F9FA">
 
-    <!--Reusable Header-->
+    <!--Reusable Header - Pinned to Top -->
     <include
         android:id="@+id/includedHeader"
         layout="@layout/layout_common_header"
@@ -44,13 +44,12 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/heroViewPager"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="260dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                android:paddingBottom="12dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvAbout" />
@@ -59,7 +58,7 @@
                 android:id="@+id/indicatorContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,8 +111,6 @@
                 app:cardBackgroundColor="#D32F2F"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="6dp"
-                android:outlineAmbientShadowColor="#88D32F2F"
-                android:outlineSpotShadowColor="#AAD32F2F"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvImportantNotice">
@@ -211,7 +208,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Reusable Bottom Navigation -->
+    <!-- Reusable Bottom Navigation - Pinned to Bottom -->
     <include
         android:id="@+id/includedBottomNav"
         layout="@layout/layout_common_bottom_nav"

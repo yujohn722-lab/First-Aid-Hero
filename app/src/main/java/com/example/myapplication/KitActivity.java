@@ -145,6 +145,8 @@ public class KitActivity extends AppCompatActivity {
         }
 
         String searchText = query == null ? "" : query.trim().toLowerCase();
+
+        // If search is empty, show all items
         if (searchText.isEmpty()) {
             adapter.updateItems(new ArrayList<>(allItems));
             return;
@@ -152,13 +154,13 @@ public class KitActivity extends AppCompatActivity {
 
         List<KitItem> filteredItems = new ArrayList<>();
         for (KitItem item : allItems) {
-            String searchableText = (item.getTitle() + " " + item.getDescription()).toLowerCase();
-            if (searchableText.contains(searchText)) {
+            // ONLY check the title, NOT the description
+            String itemName = item.getTitle().toLowerCase();
+            if (itemName.contains(searchText)) {
                 filteredItems.add(item);
             }
         }
 
-        // Strict filtering: if nothing contains the search text, show empty list.
         adapter.updateItems(filteredItems);
     }
 
